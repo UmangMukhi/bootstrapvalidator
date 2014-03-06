@@ -101,10 +101,7 @@
 
                             e.preventDefault();
                         } else {
-                            if (!that.submitHandlerCalled && that.options.submitHandler && 'function' == typeof that.options.submitHandler) {
-                                // Avoid calling submitHandler recursively
-                                // in the case user call form.submit() right inside the submitHandler()
-                                that.submitHandlerCalled = true;
+                            if (that.options.submitHandler && 'function' == typeof that.options.submitHandler) {
                                 that.options.submitHandler.call(that, that, that.$form);
                                 return false;
                             }
